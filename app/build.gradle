@@ -17,11 +17,11 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.nmmedit.libavif"
+        applicationId "com.zoffcc.applications.avifview"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 10001
-        versionName "1.0.1"
+        versionCode 10002
+        versionName "1.0.2"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true

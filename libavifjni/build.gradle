@@ -86,6 +86,12 @@ tasks.matching { task ->
 }
 
 tasks.matching { task ->
+    task.name.startsWith('writeReleaseAarMetadata')
+}.all { task ->
+    task.dependsOn 'placeAarFiles'
+}
+
+tasks.matching { task ->
     task.name.startsWith('assembleDebug')
 }.all { task ->
     task.dependsOn 'placeAarFiles'

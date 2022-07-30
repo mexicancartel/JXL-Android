@@ -56,7 +56,7 @@ dependencies {
     aar('com.github.zoff99:pkgs_libavif-android:1.0.1@aar')
 }
 
-tasks.register('moveFile', Copy) {
+tasks.register('placeAarFiles', Copy) {
     from(zipTree(configurations.aar.singleFile)) {
         include "jni/x86_64/libdav1d.a"
     }
@@ -76,4 +76,17 @@ tasks.register('moveFile', Copy) {
         include "jni/armeabi-v7a/libdav1d.a"
     }
     into project.layout.buildDirectory.dir('../../libavif/src/main/cpp/dav1d/')
+
+}
+
+tasks.matching { task ->
+    task.name.startsWith('assembleRelease')
+}.all { task ->
+    task.dependsOn 'placeAarFiles'
+}
+
+tasks.matching { task ->
+    task.name.startsWith('assembleDebug')
+}.all { task ->
+    task.dependsOn 'placeAarFiles'
 }

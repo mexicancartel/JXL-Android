@@ -20,7 +20,6 @@
             android:configChanges="screenSize|locale|touchscreen|navigation|orientation|fontScale|keyboard|keyboardHidden"
             android:excludeFromRecents="true"
             android:label="AVIF Viewer"
-            android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -31,12 +30,31 @@
 
                 <data android:scheme="file" />
                 <data android:scheme="content" />
+                <data android:scheme="http" />
                 <data android:mimeType="*/*" />
                 <data android:host="*" />
                 <data android:pathPattern=".*\\.avif" />
                 <data android:pathPattern=".*\\..*\\.avif" />
                 <data android:pathPattern=".*\\..*\\..*\\.avif" />
                 <data android:pathPattern=".*\\..*\\..*\\..*\\.avif" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.avif" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.avif" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.avif" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.avif" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.avif" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.avif" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:scheme="http" />
+                <data android:mimeType="image/avif" />
+                <data android:host="*" />
             </intent-filter>
         </activity>
     </application>

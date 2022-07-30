@@ -1,4 +1,4 @@
-package com.nmmedit.libavif;
+package com.zoffcc.applications.avifview;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.nmmedit.libavif", appContext.getPackageName());
+        assertEquals("com.zoffcc.applications.avifview", appContext.getPackageName());
     }
 }

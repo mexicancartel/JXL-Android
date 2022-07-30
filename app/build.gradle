@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+}
+
 plugins {
     id 'com.android.application'
 }
@@ -39,6 +49,7 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
     implementation project(':libavif')
 }

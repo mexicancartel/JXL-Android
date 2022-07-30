@@ -1,14 +1,16 @@
 package com.zoffcc.applications.avifview;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 public class ShareActivity extends AppCompatActivity
 {
@@ -53,9 +55,21 @@ public class ShareActivity extends AppCompatActivity
                 {
                     try
                     {
+                        CircularProgressDrawable loading_animation_drawable = new CircularProgressDrawable(this);
+                        loading_animation_drawable.setStyle(CircularProgressDrawable.LARGE);
+                        loading_animation_drawable.setColorSchemeColors(Color.WHITE);
+                        loading_animation_drawable.start();
+
                         final PhotoView photoView = (PhotoView) findViewById(R.id.avif_img);
-                        Log.i(TAG, "photoView=" + photoView + " imageUri=" + imageUri);
-                        Glide.with(this).load(imageUri).into(photoView);
+                        // Log.i(TAG, "photoView=" + photoView + " imageUri=" + imageUri);
+                        Glide.with(this).
+                                load(imageUri).
+                                diskCacheStrategy(DiskCacheStrategy.NONE).
+                                skipMemoryCache(false).
+                                placeholder(loading_animation_drawable).
+                                fallback(R.drawable.ic_baseline_broken_image_24).
+                                error(R.drawable.ic_baseline_error_outline_24).
+                                into(photoView);
                     }
                     catch (Exception e)
                     {

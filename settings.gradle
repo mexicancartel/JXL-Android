@@ -1,3 +1,4 @@
 rootProject.name = "libavif-android"
+include ':libavifjni'
 include ':app'
 include ':libavif'

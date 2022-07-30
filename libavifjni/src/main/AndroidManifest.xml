@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zoffcc.applications.libavifjni">
+
+    <application android:label="libavifjni" />
+</manifest>

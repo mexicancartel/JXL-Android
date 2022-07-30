@@ -1,0 +1,79 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+apply plugin: 'com.android.library'
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+configurations {
+    aar
+    compileClasspath.extendsFrom aar
+}
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // compile(name:'libavif-jni-lib-1.0.1', ext:'aar')
+    implementation 'com.github.zoff99:pkgs_libavif-android:1.0.1'
+    aar('com.github.zoff99:pkgs_libavif-android:1.0.1@aar')
+}
+
+tasks.register('moveFile', Copy) {
+    from(zipTree(configurations.aar.singleFile)) {
+        include "jni/x86_64/libdav1d.a"
+    }
+    into project.layout.buildDirectory.dir('../../libavif/src/main/cpp/dav1d/')
+    // ---------
+    from(zipTree(configurations.aar.singleFile)) {
+        include "jni/x86/libdav1d.a"
+    }
+    into project.layout.buildDirectory.dir('../../libavif/src/main/cpp/dav1d/')
+    // ---------
+    from(zipTree(configurations.aar.singleFile)) {
+        include "jni/arm64-v8a/libdav1d.a"
+    }
+    into project.layout.buildDirectory.dir('../../libavif/src/main/cpp/dav1d/')
+    // ---------
+    from(zipTree(configurations.aar.singleFile)) {
+        include "jni/armeabi-v7a/libdav1d.a"
+    }
+    into project.layout.buildDirectory.dir('../../libavif/src/main/cpp/dav1d/')
+}

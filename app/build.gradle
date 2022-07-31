@@ -82,6 +82,12 @@ android {
         exclude 'META-INF/androidx.viewpager2_viewpager2.version'
         exclude 'META-INF/androidx.viewpager_viewpager.version'
         exclude 'META-INF/com.google.android.material_material.version'
+        //
+        exclude 'lib/armeabi/libdav1d.a.so'
+        exclude 'lib/armeabi-v7a/libdav1d.a.so'
+        exclude 'lib/arm64-v8a/libdav1d.a.so'
+        exclude 'lib/x86/libdav1d.a.so'
+        exclude 'lib/x86_64/libdav1d.a.so'
     }
 }
 

@@ -1,0 +1,2 @@
+This app is a simple AVIF Imageviewer for Android.
+Before Android 12 it is not easy to view AVIF Images.

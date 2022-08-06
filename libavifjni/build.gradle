@@ -76,7 +76,12 @@ tasks.register('placeAarFiles', Copy) {
         include "jni/armeabi-v7a/libdav1d.a"
     }
     into project.layout.buildDirectory.dir('../../libavif/src/main/cpp/dav1d/')
+}
 
+tasks.matching { task ->
+    task.name.startsWith('assembleDebug')
+}.all { task ->
+    task.dependsOn 'placeAarFiles'
 }
 
 tasks.matching { task ->
@@ -87,12 +92,6 @@ tasks.matching { task ->
 
 tasks.matching { task ->
     task.name.startsWith('writeReleaseAarMetadata')
-}.all { task ->
-    task.dependsOn 'placeAarFiles'
-}
-
-tasks.matching { task ->
-    task.name.startsWith('assembleDebug')
 }.all { task ->
     task.dependsOn 'placeAarFiles'
 }

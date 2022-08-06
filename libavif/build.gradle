@@ -41,3 +41,23 @@ dependencies {
 
     testImplementation 'org.ow2.asm:asm:7.1'
 }
+
+tasks.register('CheckStaticDav1dlibsDebug', Copy) {
+    dependsOn ':libavifjni:assembleDebug'
+}
+
+tasks.register('CheckStaticDav1dlibsRelease', Copy) {
+    dependsOn ':libavifjni:assembleRelease'
+}
+
+tasks.matching { task ->
+    task.name.startsWith('externalNativeBuildDebug')
+}.all { task ->
+    task.dependsOn 'CheckStaticDav1dlibsDebug'
+}
+
+tasks.matching { task ->
+    task.name.startsWith('externalNativeBuildRelease')
+}.all { task ->
+    task.dependsOn 'CheckStaticDav1dlibsRelease'
+}

@@ -1,1 +1,1 @@
-# JXL Image Viewer for Android
+# JXL Image Viewer for Android(not yet)
